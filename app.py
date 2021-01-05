@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request
-import pandas as pd
-from models import process_dataFrame
 import pickle
-from sklearn.ensemble import RandomForestClassifier
+
+from flask import Flask, render_template, request
+import numpy as np
+
 
 app = Flask(__name__)
 
@@ -26,15 +26,24 @@ def result():
         'satisfaction_level': request.form['satisfaction_level'],
         'last_evaluation': request.form['last_evaluation']
     }
-
-    dataframe = pd.DataFrame(dict_data, index=[0])
-    main_data = process_dataFrame.process_dataframe(dataframe)
-    print(type(main_data))
+    x = [
+        dict_data['number_project'],
+        dict_data['average_montly_hours'],
+        dict_data['time_spend_company'],
+        dict_data['Work_accident'],
+        dict_data['promotion_last_5years'],
+        dict_data['satisfaction_level'],
+        dict_data['last_evaluation']
+    ]
+    for i in dict_data['department']:
+        x.append(i)
+    for i in dict_data['salary']:
+        x.append(i)
 
     loaded_model = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
-    result = loaded_model.predict(main_data)
+    result1 = loaded_model.predict(np.array(x))
 
-    return render_template('result.html', raw_data=dataframe.values.tolist(), processed_data=main_data.tolist(), result=result)
+    return render_template('result.html', raw_data=x, result=result1)
 
 
 if __name__ == '__main__':
