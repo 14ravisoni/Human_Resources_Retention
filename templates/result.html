@@ -5,9 +5,15 @@
     <title>Result</title>
 </head>
 <body>
- Check sent data
+<br>
+Raw_data
+{% for your_list_element in raw_data %}
+      <p>{{ your_list_element }} </p>
+{% endfor %}
 
-{% for your_list_element in list %}
+<br>
+Processed_data
+{% for your_list_element in processed_data %}
       <p>{{ your_list_element }} </p>
 {% endfor %}
 </body>

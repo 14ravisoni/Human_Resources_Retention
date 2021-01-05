@@ -25,10 +25,10 @@ def result():
         'last_evaluation': request.form['last_evaluation']
     }
 
-    dataframe = process_dataFrame.process_dataframe(pd.DataFrame(dict_data, index=[0]))
-    print(dataframe)
+    dataframe = pd.DataFrame(dict_data, index=[0])
+    main_data = process_dataFrame.process_dataframe()
 
-    return render_template('result.html', list=dataframe)
+    return render_template('result.html', raw_data=dataframe.values.tolist(), processed_data=main_data)
 
 
 if __name__ == '__main__':
