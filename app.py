@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 from models import process_dataFrame
 import pickle
+from sklearn.ensemble import RandomForestClassifier
 
 app = Flask(__name__)
 
