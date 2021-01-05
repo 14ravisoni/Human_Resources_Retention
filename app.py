@@ -24,10 +24,11 @@ def result():
         'satisfaction_level': request.form['satisfaction_level'],
         'last_evaluation': request.form['last_evaluation']
     }
+
     dataframe = process_dataFrame.process_dataframe(pd.DataFrame(dict_data, index=[0]))
     print(dataframe)
 
-    return render_template('result.html', list=dataframe.values.tolist())
+    return render_template('result.html', list=dataframe)
 
 
 if __name__ == '__main__':
