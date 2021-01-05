@@ -26,7 +26,7 @@ def result():
     }
 
     dataframe = pd.DataFrame(dict_data, index=[0])
-    main_data = process_dataFrame.process_dataframe()
+    main_data = process_dataFrame.process_dataframe(dataframe)
 
     return render_template('result.html', raw_data=dataframe.values.tolist(), processed_data=main_data)
 
