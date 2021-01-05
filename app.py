@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from models import process_dataFrame
+import pickle
 
 app = Flask(__name__)
 
@@ -27,8 +28,12 @@ def result():
 
     dataframe = pd.DataFrame(dict_data, index=[0])
     main_data = process_dataFrame.process_dataframe(dataframe)
+    print(type(main_data))
 
-    return render_template('result.html', raw_data=dataframe.values.tolist(), processed_data=main_data.tolist())
+    loaded_model = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
+    result = loaded_model.predict(main_data)
+
+    return render_template('result.html', raw_data=dataframe.values.tolist(), processed_data=main_data.tolist(), result=result)
 
 
 if __name__ == '__main__':
