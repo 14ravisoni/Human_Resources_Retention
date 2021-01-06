@@ -5,15 +5,17 @@
     <title>Result</title>
 </head>
 <body>
-<br>
-Raw_data
-{% for your_list_element in raw_data %}
-      <p>{{ your_list_element }} </p>
-{% endfor %}
 
 
-<br>
-result =
-{{result}}
+{% if result == 0 %}
+      <p>He/She will not leave</p>
+{% endif %}
+
+{% if result == 1 %}
+      <p>He/She will leave</p>
+{% endif %}
+
+
+
 </body>
 </html>

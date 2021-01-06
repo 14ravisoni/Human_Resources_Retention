@@ -43,7 +43,7 @@ def result():
     loaded_model = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
     result1 = loaded_model.predict(np.array(x).reshape(1, -1))
 
-    return render_template('result.html', raw_data=x, result=result1)
+    return render_template('result.html', result=result1)
 
 
 if __name__ == '__main__':
