@@ -1,51 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome</title>
+	<title>Human Resource Retention</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="{{ url_for('static', filename='images/icons/favicon.ico') }}" rel="icon" type="image/png">
+
+	<link href="{{ url_for('static', filename='vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/animsition/css/animsition.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/animate/animate.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='css/util.css') }}" rel="stylesheet">
+
 </head>
 <body>
-<form action="/result" method="POST">
-    Employee ID
-    <input type="text" name="employee_id" value="1999">
-    <br>number_project
-    <input type="text" name="number_project" value="2">
-    <br>average_montly_hours
-    <input type="text" name="average_montly_hours" value="345">
-    <br>time_spend_company
-    <input type="text" name="time_spend_company" value="5">
-    <br>Work_accident
-    <input type="text" name="Work_accident" value="0">
-    <br>promotion_last_5years
-    <input type="text" name="promotion_last_5years" value="6">
-    <br>department
-    <select name="department">
-        <option value="100000000">RandD</option>
-        <option value="010000000">accounting</option>
-        <option value="001000000">hr</option>
-        <option value="000100000">management</option>
-        <option value="000010000">marketing</option>
-        <option value="000001000">product_mng</option>
-        <option value="000000100">sales</option>
-        <option value="000000010">support</option>
-        <option value="000000001">technical</option>
-        <option value="000000000">IT</option>
-    </select>
-    <br>salary
-    <select name="salary">
-        <option value="10">Low</option>
-        <option value="01">Medium</option>
-        <option value="00">High</option>
-    </select>
-    <br>satisfaction_level
-    <input type="text" name="satisfaction_level" value="0.72">
-    <br>last_evaluation
-    <input type="text" name="last_evaluation" value="0.86">
-
-    <br>
-    <input type="submit" value="Check if he/she will leave company">
 
 
-</form>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/result" method="POST">
+				<span class="contact100-form-title">
+					Check if an employee will leave the company or not using our dataset
+				</span>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Number of projects he/she worked on</span>
+					<input class="input100" type="number" name="number_project" placeholder="Ex. 1 / 3 / 5" required>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Number of average monthly hours</span>
+					<input class="input100" type="number" name="average_montly_hours" placeholder="Ex. 145 / 343 / 245" required>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Number of years worked</span>
+					<input class="input100" type="number" name="time_spend_company" placeholder="Ex. 3 / 6 / 7" required>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Number of work accidents occured</span>
+					<input class="input100" type="number" name="Work_accident" placeholder="Ex. 0 / 3 / 5" required>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Number of promotions in last 5 years</span>
+					<input class="input100" type="number" name="promotion_last_5years" placeholder="Ex. 0 / 3 / 5" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Choose the department</span>
+					<div>
+						<select class="selection-2" name="department">
+							<option value="100000000">Research & Development</option>
+							<option value="010000000">Accounting</option>
+							<option value="001000000">Human Resources</option>
+							<option value="000100000">Management</option>
+							<option value="000010000">Marketing</option>
+							<option value="000001000">Product Management</option>
+							<option value="000000100">Sales</option>
+							<option value="000000010">Support</option>
+							<option value="000000001">Technical</option>
+							<option value="000000000">Information Technology</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Choose salary type</span>
+					<div>
+						<select class="selection-2" name="salary">
+							<option value="10">Low</option>
+							<option value="01">Medium</option>
+							<option value="00">High</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Enter satisfaction level </span>
+					<input class="input100" type="text" name="satisfaction_level" placeholder="Ex. 0.3 / 0.6 / 0.98 {value b/w 0 & 1}" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Enter last evaluation score </span>
+					<input class="input100" type="text" name="last_evaluation" placeholder="Ex. 0.3 / 0.6 / 0.98 {value b/w 0 & 1}" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn">
+							<span>
+								Find out
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/animsition/js/animsition.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/bootstrap/js/popper.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/select2/select2.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/daterangepicker/moment.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/daterangepicker/daterangepicker.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'vendor/countdowntime/countdowntime.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+
 </body>
 </html>

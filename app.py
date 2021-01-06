@@ -1,7 +1,6 @@
-import pickle
-
 from flask import Flask, render_template, request
 import numpy as np
+import pickle
 
 
 app = Flask(__name__)
@@ -15,7 +14,6 @@ def home():
 @app.route('/result', methods=['POST'])
 def result():
     dict_data = {
-        'employee_id': request.form['employee_id'],
         'number_project': request.form['number_project'],
         'average_montly_hours': request.form['average_montly_hours'],
         'time_spend_company': request.form['time_spend_company'],
@@ -42,6 +40,7 @@ def result():
 
     loaded_model = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
     result1 = loaded_model.predict(np.array(x).reshape(1, -1))
+    # result1 = dict_data['salary']
 
     return render_template('result.html', result=result1)
 
