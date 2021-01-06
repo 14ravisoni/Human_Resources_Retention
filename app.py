@@ -40,7 +40,6 @@ def result():
 
     loaded_model = pickle.load(open('RandomForestClassifier.pkl', 'rb'))
     result1 = loaded_model.predict(np.array(x).reshape(1, -1))
-    # result1 = dict_data['salary']
 
     return render_template('result.html', result=result1)
 
